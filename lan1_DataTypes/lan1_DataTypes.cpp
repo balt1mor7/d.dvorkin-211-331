@@ -5,7 +5,7 @@ using namespace std;
 int main()
 {
 	setlocale(LC_ALL, "Russian");
-	cout << "Дворкин Дмитрий 211-331";
+	cout << "Дворкин Дмитрий Владмирович 211-331";
 
 	cout << "int " << sizeof(int) << ", min int = " << int(0b10000000000000000000000000000000) << ", max int = " << 0b01111111111111111111111111111111 << ", min unsigned int " << 0 << ", max unsigned int " << 0b11111111111111111111111111111111 << ", size of unsidned int " << sizeof(int);
 	cout << endl << "double " << sizeof(double) << ", min double = " << -double(0b1000000000000000000000000000000000000000000000000000000000000000) << ", max double = " << 0b111111111111111111111111111111111111111111111111111111111111111;
@@ -31,7 +31,7 @@ int main()
 	cin >> a >> b;
 	cout << endl << a << " * x = " << b;
 	cout << endl << "x=" << b << "/" << a;
-	cout << endl << "x=" << b / a;
+	cout << endl << "x=" << 1.*(b / a);
 	int x, y;
 	cout << "Введите координаты концевых точек: ";
 	cin >> x >> y;
