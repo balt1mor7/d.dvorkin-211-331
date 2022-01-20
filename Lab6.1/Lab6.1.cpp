@@ -13,7 +13,8 @@ int main() {
     // main code
     std::stack <char> main_steck;
     std::string line_start;
-    std::cin >> line_start;
+    getline(std::cin, line_start);
+//std::cin >> line_start;
     //cliar line
     for (auto i : line_start) {
         if (i == '{' or i == '(' or i == '[') {

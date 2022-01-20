@@ -1,20 +1,48 @@
-﻿// lab_6.2.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
+﻿#include <iostream>
+#include <deque>
+#include <string>
 
-#include <iostream>
+void task_1(std::string line) {
+    // Полиндром деком
+    bool answ = true;
+    std::deque <char> deq_line;
+    for (auto i : line)
+        deq_line.push_back(i);
+
+    // пробегаемся по деку 
+    int len = round(deq_line.size() / 2.0);
+    for (int i = 0; i < len; i++) {
+        if (deq_line.front() == deq_line.back()) {
+            //std::cout << deq_line.front() << '+' << deq_line.back() << '\n';
+            if (deq_line.size() != 1) {
+                deq_line.pop_front();
+                deq_line.pop_back();
+            }
+            else if (deq_line.size() == 1) {
+                deq_line.pop_front();
+            }
+        }
+        else {
+            //std::cout << deq_line.front() << '-' << deq_line.back() << '\n';
+            answ = false;
+        }
+    }
+    // проверка пустоты дека
+    if (not deq_line.empty())
+        answ = false;
+
+    // вывод ответа
+    if (answ)
+        std::cout << "-> Yes";
+    else
+        std::cout << "-> No";
+}
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    std::cout << "Enter libe: ";
+    std::string line_task1;
+    getline(std::cin, line_task1);
+    task_1(line_task1);
+
 }
-
-// Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
-// Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
-
-// Советы по началу работы 
-//   1. В окне обозревателя решений можно добавлять файлы и управлять ими.
-//   2. В окне Team Explorer можно подключиться к системе управления версиями.
-//   3. В окне "Выходные данные" можно просматривать выходные данные сборки и другие сообщения.
-//   4. В окне "Список ошибок" можно просматривать ошибки.
-//   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
-//   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.

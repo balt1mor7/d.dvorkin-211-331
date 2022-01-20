@@ -1,20 +1,38 @@
-﻿// lab_6.5.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
+﻿#include <iostream>
+#include <list>
+#include <map>
+#include <string>
 
-#include <iostream>
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    std::map <std::string, std::string> poz;
+    std::list <std::string> data;
+    std::string line;
+
+    std::cout << "Student: ";
+    getline(std::cin, line);
+    while (line != "-") {
+        if (poz.find(line.substr(0, line.find(' '))) != poz.end()) {
+            // слово есть
+            auto num = ++find(data.begin(), data.end(), poz[line.substr(0, line.find(' '))]);
+            data.insert(num, line);
+            // меняем последню строку
+            poz[line.substr(0, line.find(' '))] = line;
+        }
+        else {
+            // слова нет 
+            data.push_back(line);
+            poz.insert(std::pair<std::string, std::string>(line.substr(0, line.find(' ')), line));
+        }
+
+        std::cout << "Student: ";
+        getline(std::cin, line);
+    }
+
+    // вывод листа
+    std::cout << "\nAnswer:\n";
+    for (auto i = data.begin(); i != data.end(); i++) {
+        std::cout << *i << '\n';
+    }
 }
-
-// Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
-// Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
-
-// Советы по началу работы 
-//   1. В окне обозревателя решений можно добавлять файлы и управлять ими.
-//   2. В окне Team Explorer можно подключиться к системе управления версиями.
-//   3. В окне "Выходные данные" можно просматривать выходные данные сборки и другие сообщения.
-//   4. В окне "Список ошибок" можно просматривать ошибки.
-//   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
-//   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.
